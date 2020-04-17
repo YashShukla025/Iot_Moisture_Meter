@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>  Moisture Meter For Grain   </title>
+
+        <meta charset="UTF-8">
+        <meta name="description" content="Moisture Meter For Grain">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Mays">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <form action="{% url 'prediction' %}" method="Post" onsubmit=" #java script function#">
+        {% csrf_token %}
+        <input type="text" name="location" required autocomplete="on" placeholder="Location *"><br>
+        <input type="text" name="season" required autocomplete="on" placeholder="Season *"><br>
+        <input type="number" min="15" max="45" name="temperature" required autocomplete="on" placeholder="Temperature *"><br>
+        <input type="number" min="30" max="80" name="humidity" required autocomplete="on" placeholder="Humidity *"><br>
+        <button type="submit"> Predict </button>
+        </form>
+        {% if val %}
+
+        <br><label align='center'><h1>{{ val }}</h1></label>
+
+        {% endif %}
+    </body>
+</html>

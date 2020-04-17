@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+	{% load static %}
+
+	<head>
+		<meta charset="UTF-8">
+        <meta name="description" content="Moisture Meter For Grain">
+        <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Mays">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Graph</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+		<script src="{% static 'javaScript/plot.js' %}"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body onload="ui()">
+	<div>
+		<canvas id="line-chart" width="500" height="200"></canvas>
+	</div>
+	</body>
+</html>

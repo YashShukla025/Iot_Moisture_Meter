@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+  {% load static %}
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blueprint: Page Stack Navigation</title>
+	<meta name="description" content="Blueprint: A basic template for a page stack navigation effect" />
+	<meta name="keywords" content="blueprint, template, html, css, page stack, 3d, perspective, navigation, menu" />
+	<meta name="author" content="Codrops" />
+
+  <link rel="shortcut icon" href="{% static 'css/favicon.ico' %}">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+		<script src="{% static 'javaScript/plot.js' %}"></script>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+	<script src="{% static 'javaScript/modernizr-custom.js' %}"></script>
+</head>
+
+<body onload="ui();manish();">
+	<!-- navigation -->
+	<nav class="pages-nav">
+		<div class="pages-nav__item"><a class="link link--page" href="#Predict-home">Home</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#Data-table">Data Table</a></div>
+		<div class="pages-nav__item"><a class="link link--page" href="#Graph-page">Graph</a></div>
+	 
+		<div class="pages-nav__item pages-nav__item--social">
+			<a class="link link--social link--faded" href="#"><i class="fa fa-twitter"></i><span class="text-hidden">Twitter</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-linkedin"></i><span class="text-hidden">LinkedIn</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-facebook"></i><span class="text-hidden">Facebook</span></a>
+			<a class="link link--social link--faded" href="#"><i class="fa fa-youtube-play"></i><span class="text-hidden">YouTube</span></a>
+		</div>
+	</nav>
+	<!-- /navigation-->
+	<!-- pages stack -->
+	<div class="pages-stack">
+		<!-- page -->
+		<div class="page" id="Predict-home">
+			<!-- Blueprint header -->
+			
+			<div class="container">
+		
+				<br><div class="pages-nav__item">	<h1 class="brand"><a class="link link--page" href="{% url 'index' %}"><span>  MAY</span>S </a> </h1></div><br>
+			</div>
+			<div class="limiter">
+				<div class="container-predict">
+				  <div class="wrap-table100">
+					 
+						<div class="container-predict-form">
+					<form action="{% url 'predict' %}" method="Post" onsubmit=" #java script function#">
+					{% csrf_token %}
+						<div class="row">
+							<div class="col-25">
+							<label for="location">Location</label>
+							</div>
+							<div class="col-75">
+							<select id="location" required placeholder="Location *" name="location">
+								<option value="Mumbai">Mumbai</option>
+								<option value="Chennai">Chennai</option>
+								<option value="Delhi">Delhi</option>
+							</select>
+							</div>
+						</div><br> 
+						<div class="row">
+							<div class="col-25">
+							<label for="season">Season</label>
+							</div>
+							<div class="col-75">
+							<select id="season" required placeholder="Season *" name="season">
+								<option value="Summer">Summer</option>
+								<option value="Rainy">Rainy</option>
+								<option value="Winter">Winter</option>
+								<option value="Spring">Spring</option>
+							</select>
+							</div>
+						</div><br> 
+						<div class="row">
+							<div class="col-25">
+							<label for="temperature">Temperature</label>
+							</div>
+							<div class="col-75">
+							<input type="number" min="15" max="45" id="temperature" name="temperature"  required  placeholder="Temperature *">
+							</div>
+						</div><br> 
+						<div class="row">
+							<div class="col-25">
+							<label for="humidity">Humidity</label>
+							</div>
+							<div class="col-75">
+							<input type="number" min="30" max="80" id="humidity" name="humidity" required autocomplete="on" placeholder="Humidity *">
+							</div>
+						</div><br>
+						<div class="row">
+							<input type="submit" value="Predict">
+						</div>
+						
+					</form>
+					{% if val %}
+			
+					<br><label align='center'><h1>{{ val }}</h1></label> 
+			
+					{% endif %}
+					 
+					</div>
+				  </div>
+				</div>
+			
+			  </div>
+			
+
+		</div>
+
+	 
+		<!-- /page -->
+		<div class="page" id="Data-table"  >
+			<div class="container">
+		
+				<br><div class="pages-nav__item">	<h1 class="brand"><a class="link link--page" href="{% url 'index' %}"><span>  MAY</span>S </a> </h1></div><br>
+			</div>
+			<div class="limiter">
+				<div class="container-table100">
+					<div class="wrap-table100">
+					<div class="table100">
+						<div id="demo">
+				
+						</div>
+						<tfoot>
+             <br>
+               <button style="color:#0000FF;text-decoration: none;display: inline-block; padding: 5px 14px; border-radius: 15px; background-color: #fff; border: 1px solid #ddd;" onclick="dd2()">Prev</button> 
+              <button style="color:#0000FF;text-decoration: none;display: inline-block; padding: 5px 14px; border-radius: 15px; background-color: #fff; border: 1px solid #ddd;" onclick="dd()">Next</button> 
+              
+     
+              
+              
+              
+            </tfoot>
+						</div>
+			
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
+	
+		<div class="page" id="Graph-page">
+			
+			<div class="container">
+		
+        <br><div class="pages-nav__item">	<h1 class="brand"><a class="link link--page" href="{% url 'index' %}"><span>  MAY</span>S </a> </h1></div><br>
+			</div>
+			
+			<div class="graph_color">
+				<canvas id="line-chart" height="180px" width="500px" class="graph_inline"></canvas>
+			</div>
+
+		</div>
+	 
+	</div>
+	<!-- /pages-stack -->
+	<button class="menu-button"><span>Menu</span></button>
+	<script src="{% static 'javaScript/classie.js' %}"></script>
+	<script src="{% static 'javaScript/main.js' %}"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+  <script src="{% static 'javaScript/newmain.js' %}"></script>
+</body>
+
+</html>
