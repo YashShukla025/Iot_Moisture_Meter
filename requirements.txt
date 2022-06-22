@@ -7,7 +7,7 @@ heroku==0.1.4
 idna==2.9
 joblib==0.14.1
 naive-bayes==0.1.1
-numpy==1.18.2
+numpy==1.22.0
 pandas==1.0.3
 python-dateutil==1.5
 python-firebase==1.2
